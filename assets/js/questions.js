@@ -24,4 +24,4 @@ let questions= [
         choices: ["prevents a submit button from submitting", "prevents a link from following the url", "prevents further propogation of an event through the DOM", "cancels cancelable events",],
         correct: "<prevents further propogation of an event through the DOM>"
     },
-];
+]

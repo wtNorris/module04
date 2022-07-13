@@ -5,31 +5,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <title>Code Quiz</title>
-    <a href="./scores.html" target="_blank">View Highscores</a>
 </head>
 
 <body>
+    <header>
+        <a href="./scores.html" target="_blank">View Highscores</a>
+        <div id="timerContainer" style="display: none">Time Remaining: <span id="timerText">0</span></div>
+    </header>
 
-    <section class="header">
-        <div id="timer">60</div>
-    </section>
-
+    <main id="main">
     <div class="quiz">
-        <div id="startScreen">
         <h1>JavaScript Fundamentals PopQuiz!</h1>
-                <p>You have one minute to answer 5 questions correctly, press [Start Quiz!] when ready!</p>
-                <div class="startButton">
-                    <button id="startButt">Start Quiz!</button>
-                </div>
+        <div id="startScreen">
+                    <p id="startText">You have one minute to answer 5 questions correctly, press [Start Quiz!] when ready!</p>
+                <button type="button" id="startButt">Start Quiz!</button>
         </div>
-    
-        <section id="quiztainer">
-            <div id="questionContainer"></div>
+                <div id="questionContainer"></div>
                 <ul id="choices"></ul>
-        </section>
+        
     </div>
+    </main>
+
+    <form id="submitScoreform" style="display: none;">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="nameInput">
+        <button type="submit" id="submitScoreButt">Sumbit</button>
+    </form>
 
     <script src="assets/js/questions.js"></script>
     <script src="assets/js/logic.js"></script>

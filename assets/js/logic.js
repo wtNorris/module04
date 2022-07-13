@@ -1,42 +1,36 @@
-//const timerContainerEl = document.getElementById("timerContainer");
+const timerContainerEl = document.getElementById("timerContainer");
 const timerTextEl = document.getElementById("timerText");
-//const directionTextEl = document.getElementById("directionText");
+const startTextEl = document.getElementById("startText");
 const startButton= document.getElementById("startButt");
-const questionContainerElement= document.getElementById("questionContainer");
+const questionContainerEl= document.getElementById("questionContainer");
 const choicesContainerElement= document.getElementById("choices");
 //const mainContainerElement = document.getElementById(main)[0];
 //const sumbitScoreFormEl = document.getElementById("submitScoreForm");
-//const playerNameInputEl = document.getElementById("playerNameInput");
+const playerNameInputEl = document.getElementById("nameInput");
 //const scoreSubmitButtEl = document.getElementById("submitScoreButt");
 
-//const MAX_TIME_REMAIN_SECS = 60;
-//const INTERVAL_TIMEOUT_MS = 1000;
+const MAX_TIME_REMAIN_SECS = 60;
+const INTERVAL_TIMEOUT_MS = 1000;
 
 var startEl= document.getElementById("startScreen");
 var currentQuestion= 0;
 
-
-
-startButton.addEventListener("click", startGame);
-
-showTimer: function () {
-    timerTextEl.textContent = this.getTimeRemaining();
-    timerContainerEl.style.display = "block";
-}
+//showTimer: function () {
+//    timerTextEl.textContent = this.getTimeRemaining();
+//    timerContainerEl.style.display = "block";
+//}
 
 function startGame(){
-    startEl.style.display = "none";
-    questionContainerElement.style.display = "block";
-    showTimer();
+    startTextEl.style.display = "none";
+    questionContainerEl.style.display = "block";
+    //showTimer();
     renderQuestion();
+    renderAnswers();
 }
 
 function renderQuestion(){
     var questionsToRender = questions[currentQuestion];
-    questionContainerElement.textContent = questionsToRender.question;
-    renderAnswers();
-
-    console.log(questionContainerElement);
+    questionContainerEl.textContent = questionsToRender.question;
 };
 
 function renderAnswers(){
@@ -44,11 +38,22 @@ function renderAnswers(){
     Object.values(choicesToRender).forEach(function(choice, index){
         var choiceElement = document.createElement("button");
         choiceElement.textContent = choice;
-        questionContainerElement.append(choiceElement);
+        questionContainerEl.append(choiceElement);
         console.log(choicesToRender)
 
     })
     
 }
+//check right answers
 
+startButton.addEventListener("click", startGame);
 choicesContainerElement.addEventListener("click", checkAnswer);
+
+function checkAnswer(){
+    var correct = questions[currentQuestion].choices[correct];
+    if (choices == correct) {
+        currentQuestion++;
+    }
+}
+
+//  Pull up next questions
